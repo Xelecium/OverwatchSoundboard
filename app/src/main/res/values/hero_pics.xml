@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="hero_pics_array">
+        <item>@drawable/hero_ana</item>
+        <item>@drawable/hero_bastion</item>
+        <item>@drawable/hero_dva</item>
+        <item>@drawable/hero_genji</item>
+        <item>@drawable/hero_hanzo</item>
+        <item>@drawable/hero_junkrat</item>
+        <item>@drawable/hero_lucio</item>
+        <item>@drawable/hero_mccree</item>
+        <item>@drawable/hero_mei</item>
+        <item>@drawable/hero_mercy</item>
+        <item>@drawable/hero_pharah</item>
+        <item>@drawable/hero_reaper</item>
+        <item>@drawable/hero_reinhardt</item>
+        <item>@drawable/hero_roadhog</item>
+        <item>@drawable/hero_soldier76</item>
+        <item>@drawable/hero_symmetra</item>
+        <item>@drawable/hero_torbjorn</item>
+        <item>@drawable/hero_tracer</item>
+        <item>@drawable/hero_widowmaker</item>
+        <item>@drawable/hero_winston</item>
+        <item>@drawable/hero_zarya</item>
+        <item>@drawable/hero_zenyatta</item>
+    </integer-array>
+</resources>

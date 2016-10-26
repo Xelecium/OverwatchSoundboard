@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="ult_pics_array">
+        <item>@drawable/ult_ana</item>
+        <item>@drawable/ult_bastion</item>
+        <item>@drawable/ult_dva</item>
+        <item>@drawable/ult_genji</item>
+        <item>@drawable/ult_hanzo</item>
+        <item>@drawable/ult_junkrat</item>
+        <item>@drawable/ult_lucio</item>
+        <item>@drawable/ult_mccree</item>
+        <item>@drawable/ult_mei</item>
+        <item>@drawable/ult_mercy</item>
+        <item>@drawable/ult_pharah</item>
+        <item>@drawable/ult_reaper</item>
+        <item>@drawable/ult_reinhardt</item>
+        <item>@drawable/ult_roadhog</item>
+        <item>@drawable/ult_soldier76</item>
+        <item>@drawable/ult_symmetra</item>
+        <item>@drawable/ult_torbjorn</item>
+        <item>@drawable/ult_tracer</item>
+        <item>@drawable/ult_widowmaker</item>
+        <item>@drawable/ult_winston</item>
+        <item>@drawable/ult_zarya</item>
+        <item>@drawable/ult_zenyatta</item>
+    </integer-array>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hero_names_array">
+        <item>Ana</item>
+        <item>Bastion</item>
+        <item>D.Va</item>
+        <item>Genji</item>
+        <item>Hanzo</item>
+        <item>Junkrat</item>
+        <item>Lúcio</item>
+        <item>McCree</item>
+        <item>Mei</item>
+        <item>Mercy</item>
+        <item>Pharah</item>
+        <item>Reaper</item>
+        <item>Reinhardt</item>
+        <item>Roadhog</item>
+        <item>Soldier: 76</item>poo
+        <item>Symmetra</item>
+        <item>Torbjörn</item>
+        <item>Tracer</item>
+        <item>Widowmaker</item>
+        <item>Winston</item>
+        <item>Zarya</item>
+        <item>Zenyatta</item>
+    </string-array>
+</resources>
