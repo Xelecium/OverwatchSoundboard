@@ -2,5 +2,5 @@
     <string name="app_name">Overwatch Soundboard</string>
     <string name="action_settings">Settings</string>
 
-    <integer name="heroCount">22</integer>
+    <integer name="heroCount">23</integer>
 </resources>

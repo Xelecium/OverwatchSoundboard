@@ -1,8 +1,9 @@
 package xeleciumlabs.owsoundboard.activities;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,11 +16,15 @@ import xeleciumlabs.owsoundboard.adapters.HeroAdapter;
 import xeleciumlabs.owsoundboard.data.Hero;
 import xeleciumlabs.owsoundboard.data.HeroList;
 
+import static android.widget.AdapterView.*;
+
 public class MainActivity extends Activity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private ArrayList<Hero> mHeroes;
+
+    private MediaPlayer mPlayer;
 
     private TextView mTextView;
     private GridView mGridView;
@@ -34,17 +39,21 @@ public class MainActivity extends Activity {
         HeroList.getHeroList(this, mHeroes);
 
         mGridView = (GridView)findViewById(R.id.heroList);
-        HeroAdapter adapter = new HeroAdapter(this);
+        HeroAdapter adapter = new HeroAdapter(this, mHeroes);
         mGridView.setAdapter(adapter);
-
-
+        mGridView.setOnItemClickListener(heroClickListener);
     }
 
 
-    AdapterView.OnItemClickListener heroClickListener = new AdapterView.OnItemClickListener() {
+    OnItemClickListener heroClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.d(TAG, "Pressed " + position);
+            Hero now = mHeroes.get(position);
+            int resID = now.getUltimate();
 
+            mPlayer = MediaPlayer.create(MainActivity.this, resID);
+            mPlayer.start();
         }
     };
 

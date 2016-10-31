@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="sound_ultimate_array">
+        <item>@raw/ultimate_ana</item>
+        <item>@raw/ultimate_bastion</item>
+        <item>@raw/ultimate_dva</item>
+        <item>@raw/ultimate_genji</item>
+        <item>@raw/ultimate_hanzo</item>
+        <item>@raw/ultimate_junkrat</item>
+        <item>@raw/ultimate_lucio</item>
+        <item>@raw/ultimate_mccree</item>
+        <item>@raw/ultimate_mei</item>
+        <item>@raw/ultimate_mercy</item>
+        <item>@raw/ultimate_pharah</item>
+        <item>@raw/ultimate_reaper</item>
+        <item>@raw/ultimate_reinhardt</item>
+        <item>@raw/ultimate_roadhog</item>
+        <item>@raw/ultimate_soldier76</item>
+        <item>@raw/sombra_placeholder</item>
+        <item>@raw/ultimate_symmetra</item>
+        <item>@raw/ultimate_torbjorn</item>
+        <item>@raw/ultimate_tracer</item>
+        <item>@raw/ultimate_widowmaker</item>
+        <item>@raw/ultimate_winston</item>
+        <item>@raw/ultimate_zarya</item>
+        <item>@raw/ultimate_zenyatta</item>
+    </integer-array>
+</resources>
