@@ -6,36 +6,33 @@ package xeleciumlabs.owsoundboard.data;
 public class Hero {
 
     private String mName;   //String for name
-    private int mPic;       //Drawable ID for pic
-    private int mHello;    //ID for hello sfx
-    private int mReady;    //ID for ultimate ready sfx
-    private int mUltimate; //ID for ultimate sfx
+    private int mHeroPic;       //Drawable ID for pic
+    private int mUltSound; //ID for ultimate sfx
+    private int mUltPic;    //ID for hello sfx
 
-    public Hero (String name, int pic, int hello, int ready, int ultimate) {
+    public Hero (String name, int heroPic, int ultSound, int ultPic) {
         mName = name;
-        mPic = pic;
-        mHello = hello;
-        mReady = ready;
-        mUltimate = ultimate;
+        mHeroPic = heroPic;
+        mUltSound = ultSound;
+        mUltPic = ultPic;
     }
 
     public String getName() {return mName;}
 
     public void setName(String name) {mName = name;}
 
-    public int getPic() {return mPic;}
+    public int getHeroPic() {return mHeroPic;}
 
-    public void setPic(int pic) {mPic = pic;}
+    public void setHeroPic(int heroPic) {
+        mHeroPic = heroPic;}
 
-    public int getHello() {return mHello;}
+    public int getUltPic() {return mUltPic;}
 
-    public void setHello(int hello) {mHello = hello;}
+    public void setUltPic(int ultPic) {
+        mUltPic = ultPic;}
 
-    public int getReady() {return mReady;}
+    public int getUltSound() {return mUltSound;}
 
-    public void setReady(int ready) {mReady = ready;}
-
-    public int getUltimate() {return mUltimate;}
-
-    public void setUltimate(int ultimate) {mUltimate = ultimate;}
+    public void setUltSound(int ultSound) {
+        mUltSound = ultSound;}
 }

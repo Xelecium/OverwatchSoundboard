@@ -64,8 +64,11 @@ public class MainActivity extends Activity {
             Hero now = mHeroes.get(position);
 
             mPlayer.reset();
-            mPlayer = MediaPlayer.create(MainActivity.this, now.getUltimate());
+            mPlayer = MediaPlayer.create(MainActivity.this, now.getUltSound());
             mPlayer.start();
+
+            view.findViewById(R.id.heroPic).setAlpha(0.2f);
+            view.findViewById(R.id.ultPic).setVisibility(VISIBLE);
 
             //TODO: Add an onErrorListener for the MediaPlayer
         }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -59,6 +58,7 @@ public class HeroAdapter extends BaseAdapter {
             holder = new ViewHolder();
 //            holder.heroName = (TextView)convertView.findViewById(R.id.heroName);
             holder.heroPic = (ImageView)convertView.findViewById(R.id.heroPic);
+            holder.ultPic = (ImageView)convertView.findViewById(R.id.ultPic);
             holder.viewPosition = position;
 
             convertView.setTag(holder);
@@ -70,13 +70,15 @@ public class HeroAdapter extends BaseAdapter {
         Hero currentHero = mHeroes.get(position);
 
 //        holder.heroName.setText(currentHero.getName());
-        holder.heroPic.setImageResource(currentHero.getPic());
+        holder.heroPic.setImageResource(currentHero.getHeroPic());
+        holder.ultPic.setImageResource(currentHero.getUltPic());
         return convertView;
     }
 
     private static class ViewHolder {
 //        TextView heroName;
         ImageView heroPic;
+        ImageView ultPic;
         int viewPosition;
     }
 }

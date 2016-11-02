@@ -20,21 +20,24 @@ public abstract class HeroList {
         //Get drawable IDs from hero_pics.xml
         TypedArray heroPics = res.obtainTypedArray(R.array.hero_pics_array);
         //Get ultimate IDs from sound_ultimate.xml
-        TypedArray heroUlts = res.obtainTypedArray(R.array.sound_ultimate_array);
+        TypedArray ultSounds = res.obtainTypedArray(R.array.sound_ultimate_array);
+        //Get ultimate IDs from ult_pics.xml
+        TypedArray ultPics = res.obtainTypedArray(R.array.ult_pics_array);
 
         int heroCount = res.getInteger(R.integer.heroCount);
         for (int i = 0; i < heroCount; i++) {
             heroes.add(new Hero(
-                    heroNames[i],
-                    heroPics.getResourceId(i, -1),
-                    0,
-                    0,
-                    heroUlts.getResourceId(i, -1)));
+                    heroNames[i],                       //Hero Name
+                    heroPics.getResourceId(i, -1),      //Hero Pic
+                    ultSounds.getResourceId(i, -1),      //Ultimate Sound
+                    ultPics.getResourceId(i, -1)        //Ultimate Pic
+            ));
         }
 
         //cleanup resources
         heroPics.recycle();
-        heroUlts.recycle();
+        ultSounds.recycle();
+        ultPics.recycle();
 
         return heroes;
     }
