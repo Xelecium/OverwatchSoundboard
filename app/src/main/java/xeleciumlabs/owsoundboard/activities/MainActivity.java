@@ -42,6 +42,8 @@ public class MainActivity extends Activity {
         HeroAdapter adapter = new HeroAdapter(this, mHeroes);
         mGridView.setAdapter(adapter);
         mGridView.setOnItemClickListener(heroClickListener);
+
+        mPlayer = MediaPlayer.create(MainActivity.this, R.raw.sombra_placeholder);
     }
 
     @Override
@@ -61,9 +63,9 @@ public class MainActivity extends Activity {
             Log.d(TAG, "Pressed " + position);
             Hero now = mHeroes.get(position);
 
+            mPlayer.reset();
             mPlayer = MediaPlayer.create(MainActivity.this, now.getUltimate());
             mPlayer.start();
-
 
             //TODO: Add an onErrorListener for the MediaPlayer
         }
