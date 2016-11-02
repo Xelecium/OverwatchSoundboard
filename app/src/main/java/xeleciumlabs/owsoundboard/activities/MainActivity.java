@@ -44,16 +44,28 @@ public class MainActivity extends Activity {
         mGridView.setOnItemClickListener(heroClickListener);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPlayer.release();
+    }
 
     OnItemClickListener heroClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Log.d(TAG, "Pressed " + position);
             Hero now = mHeroes.get(position);
-            int resID = now.getUltimate();
 
-            mPlayer = MediaPlayer.create(MainActivity.this, resID);
+            mPlayer = MediaPlayer.create(MainActivity.this, now.getUltimate());
             mPlayer.start();
+
+
+            //TODO: Add an onErrorListener for the MediaPlayer
         }
     };
 
