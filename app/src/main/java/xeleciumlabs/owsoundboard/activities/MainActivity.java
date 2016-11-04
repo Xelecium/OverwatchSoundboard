@@ -31,14 +31,11 @@ public class MainActivity extends Activity {
 
     private ArrayList<Hero> mHeroes;
 
-    private TextView mTextView;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = (TextView)findViewById(R.id.textView);
         mHeroes = new ArrayList<>();
         HeroList.getHeroList(this, mHeroes);
 
@@ -72,16 +69,20 @@ public class MainActivity extends Activity {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     Log.d(TAG, "SFX Complete");
-                    ultPic.setVisibility(INVISIBLE);
                     heroPic.setAlpha(1.0f);
+                    ultPic.setVisibility(INVISIBLE);
                     mediaPlayer.release();
+                }
+            });
+            mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(MediaPlayer mp, int what, int extra) {
+                    return false;
                 }
             });
 
             ultPic.setVisibility(VISIBLE);
             ultPic.setAlpha(0.6f);
-
-            //TODO: Add an onErrorListener for the MediaPlayer
         }
     };
 
