@@ -5,12 +5,12 @@ package xeleciumlabs.owsoundboard.data;
  */
 public class Hero {
 
-    private String mName;   //String for name
-    private int mHeroPic;       //Drawable ID for pic
-    private int mUltSound; //ID for ultimate sfx
-    private int mUltPic;    //ID for hello sfx
+    private String mName;   //String for Hero name
+    private int mHeroPic;   //ID for Hero pic
+    private int mUltSound;  //ID for Ultimate sfx
+    private int mUltPic;    //ID for Ultimate pic
 
-    public Hero (String name, int heroPic, int ultSound, int ultPic) {
+    Hero(String name, int heroPic, int ultSound, int ultPic) {
         mName = name;
         mHeroPic = heroPic;
         mUltSound = ultSound;
@@ -19,20 +19,9 @@ public class Hero {
 
     public String getName() {return mName;}
 
-    public void setName(String name) {mName = name;}
-
     public int getHeroPic() {return mHeroPic;}
-
-    public void setHeroPic(int heroPic) {
-        mHeroPic = heroPic;}
 
     public int getUltPic() {return mUltPic;}
 
-    public void setUltPic(int ultPic) {
-        mUltPic = ultPic;}
-
     public int getUltSound() {return mUltSound;}
-
-    public void setUltSound(int ultSound) {
-        mUltSound = ultSound;}
 }

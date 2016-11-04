@@ -13,7 +13,11 @@ import xeleciumlabs.owsoundboard.R;
  */
 public abstract class HeroList {
     public static ArrayList<Hero> getHeroList(Context context, ArrayList<Hero> heroes) {
+
         Resources res = context.getResources();
+        final int PIC_DEFAULT = R.drawable.ow_logo;
+        final int SFX_DEFAULT = R.raw.sombra_placeholder;
+
 
         //Get names from the hero_names.xml
         String[] heroNames = res.getStringArray(R.array.hero_names_array);
@@ -28,13 +32,13 @@ public abstract class HeroList {
         for (int i = 0; i < heroCount; i++) {
             heroes.add(new Hero(
                     heroNames[i],                       //Hero Name
-                    heroPics.getResourceId(i, -1),      //Hero Pic
-                    ultSounds.getResourceId(i, -1),      //Ultimate Sound
-                    ultPics.getResourceId(i, -1)        //Ultimate Pic
+                    heroPics.getResourceId(i, PIC_DEFAULT),      //Hero Pic
+                    ultSounds.getResourceId(i, SFX_DEFAULT),     //Ultimate Sound
+                    ultPics.getResourceId(i, PIC_DEFAULT)        //Ultimate Pic
             ));
         }
 
-        //cleanup resources
+        //Cleanup resources
         heroPics.recycle();
         ultSounds.recycle();
         ultPics.recycle();
