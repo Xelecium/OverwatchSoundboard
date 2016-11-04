@@ -1,8 +1,13 @@
 package xeleciumlabs.owsoundboard.activities;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +21,9 @@ import xeleciumlabs.owsoundboard.adapters.HeroAdapter;
 import xeleciumlabs.owsoundboard.data.Hero;
 import xeleciumlabs.owsoundboard.data.HeroList;
 
-import static android.widget.AdapterView.*;
+import static android.widget.AdapterView.INVISIBLE;
+import static android.widget.AdapterView.OnItemClickListener;
+import static android.widget.AdapterView.VISIBLE;
 
 public class MainActivity extends Activity {
 
@@ -24,10 +31,7 @@ public class MainActivity extends Activity {
 
     private ArrayList<Hero> mHeroes;
 
-    private MediaPlayer mPlayer;
-
     private TextView mTextView;
-    private GridView mGridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,15 +39,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mTextView = (TextView)findViewById(R.id.textView);
-        mHeroes = new ArrayList<Hero>();
+        mHeroes = new ArrayList<>();
         HeroList.getHeroList(this, mHeroes);
 
-        mGridView = (GridView)findViewById(R.id.heroList);
+        GridView heroGrid = (GridView) findViewById(R.id.heroList);
         HeroAdapter adapter = new HeroAdapter(this, mHeroes);
-        mGridView.setAdapter(adapter);
-        mGridView.setOnItemClickListener(heroClickListener);
-
-        mPlayer = MediaPlayer.create(MainActivity.this, R.raw.sombra_placeholder);
+        heroGrid.setAdapter(adapter);
+        heroGrid.setOnItemClickListener(heroClickListener);
     }
 
     @Override
@@ -54,21 +56,30 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPlayer.release();
     }
 
     OnItemClickListener heroClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.d(TAG, "Pressed " + position);
-            Hero now = mHeroes.get(position);
+            Hero hero = mHeroes.get(position);
+            Log.d(TAG, "Ultimate: " + hero.getName());
+            final View heroPic = view.findViewById(R.id.heroPic);
+            final View ultPic = view.findViewById(R.id.ultPic);
 
-            mPlayer.reset();
-            mPlayer = MediaPlayer.create(MainActivity.this, now.getUltSound());
-            mPlayer.start();
+            final MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, hero.getUltSound());
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    Log.d(TAG, "SFX Complete");
+                    ultPic.setVisibility(INVISIBLE);
+                    heroPic.setAlpha(1.0f);
+                    mediaPlayer.release();
+                }
+            });
 
-            view.findViewById(R.id.heroPic).setAlpha(0.2f);
-            view.findViewById(R.id.ultPic).setVisibility(VISIBLE);
+            ultPic.setVisibility(VISIBLE);
+            ultPic.setAlpha(0.6f);
 
             //TODO: Add an onErrorListener for the MediaPlayer
         }
