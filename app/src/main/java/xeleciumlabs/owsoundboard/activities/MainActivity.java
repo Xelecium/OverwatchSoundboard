@@ -45,16 +45,6 @@ public class MainActivity extends Activity {
         heroGrid.setOnItemClickListener(heroClickListener);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     OnItemClickListener heroClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
