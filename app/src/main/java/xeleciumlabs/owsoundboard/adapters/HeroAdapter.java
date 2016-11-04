@@ -3,6 +3,7 @@ package xeleciumlabs.owsoundboard.adapters;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,6 +13,10 @@ import java.util.ArrayList;
 
 import xeleciumlabs.owsoundboard.R;
 import xeleciumlabs.owsoundboard.data.Hero;
+
+import static android.view.MotionEvent.ACTION_DOWN;
+import static android.view.MotionEvent.ACTION_MASK;
+import static android.view.MotionEvent.ACTION_UP;
 
 /**
  * Created by Xelecium on 10/24/2016.
@@ -56,7 +61,6 @@ public class HeroAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.hero_item, parent, false);
 
             holder = new ViewHolder();
-//            holder.heroName = (TextView)convertView.findViewById(R.id.heroName);
             holder.heroPic = (ImageView)convertView.findViewById(R.id.heroPic);
             holder.ultPic = (ImageView)convertView.findViewById(R.id.ultPic);
             holder.viewPosition = position;
@@ -66,19 +70,36 @@ public class HeroAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder)convertView.getTag();
         }
+        convertView.setOnTouchListener(heroTouchListener);
 
         Hero currentHero = mHeroes.get(position);
 
-//        holder.heroName.setText(currentHero.getName());
         holder.heroPic.setImageResource(currentHero.getHeroPic());
         holder.ultPic.setImageResource(currentHero.getUltPic());
         return convertView;
     }
 
     private static class ViewHolder {
-//        TextView heroName;
         ImageView heroPic;
         ImageView ultPic;
         int viewPosition;
     }
+
+    View.OnTouchListener heroTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction() & ACTION_MASK) {
+                case ACTION_DOWN:
+                    v.setAlpha(0.5f);
+                    break;
+                case ACTION_UP:
+                    v.setAlpha(1.0f);
+                    v.performClick();
+                    break;
+                default: break;
+            }
+
+            return false;
+        }
+    };
 }
