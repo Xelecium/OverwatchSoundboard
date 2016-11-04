@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
             });
 
             ultPic.setVisibility(VISIBLE);
-            ultPic.setAlpha(0.6f);
+            ultPic.setAlpha(0.75f);
         }
     };
 
