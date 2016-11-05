@@ -2,6 +2,7 @@ package xeleciumlabs.owsoundboard.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 import xeleciumlabs.owsoundboard.R;
 import xeleciumlabs.owsoundboard.data.Hero;
 
+import static android.view.MotionEvent.ACTION_CANCEL;
 import static android.view.MotionEvent.ACTION_DOWN;
-import static android.view.MotionEvent.ACTION_MASK;
 import static android.view.MotionEvent.ACTION_UP;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 /**
  * Created by Xelecium on 10/24/2016.
@@ -54,7 +57,7 @@ public class HeroAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder holder;
+        final ViewHolder holder;
 
         //if view is not yet populated
         if (convertView == null) {
@@ -70,12 +73,56 @@ public class HeroAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder)convertView.getTag();
         }
-        convertView.setOnTouchListener(heroTouchListener);
 
-        Hero currentHero = mHeroes.get(position);
+        final Hero currentHero = mHeroes.get(position);
 
         holder.heroPic.setImageResource(currentHero.getHeroPic());
         holder.ultPic.setImageResource(currentHero.getUltPic());
+
+        convertView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getActionMasked()) {
+                    case ACTION_DOWN:
+                        holder.heroPic.setAlpha(0.5f);
+                        return true;
+                    case ACTION_UP:
+                        v.performClick();
+                        return true;
+                    case ACTION_CANCEL:     //finger moves off of hero
+                        holder.heroPic.setAlpha(1.0f);
+                        return true;
+                }
+                return false;
+            }
+        });
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.ultPic.setVisibility(VISIBLE);   //Make Ultimate icon visible
+                holder.ultPic.setAlpha(0.75f);
+
+                final MediaPlayer mediaPlayer = MediaPlayer.create(mContext, currentHero.getUltSound());
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        holder.heroPic.setAlpha(1.0f);
+                        holder.ultPic.setVisibility(INVISIBLE);
+                        mediaPlayer.release();
+                    }
+                });
+                mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                    @Override
+                    public boolean onError(MediaPlayer mp, int what, int extra) {
+                        return false;
+                    }
+                });
+            }
+        });
+
         return convertView;
     }
 
@@ -84,22 +131,4 @@ public class HeroAdapter extends BaseAdapter {
         ImageView ultPic;
         int viewPosition;
     }
-
-    View.OnTouchListener heroTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction() & ACTION_MASK) {
-                case ACTION_DOWN:
-                    v.setAlpha(0.5f);
-                    break;
-                case ACTION_UP:
-                    v.setAlpha(1.0f);
-                    v.performClick();
-                    break;
-                default: break;
-            }
-
-            return false;
-        }
-    };
 }
