@@ -10,6 +10,8 @@ import xeleciumlabs.owsoundboard.R;
 
 /**
  * Created by Xelecium on 10/24/2016.
+ *  Abstract class containing arrays of resource IDs for OverWatch Heroes.
+ *  Used primarily as a data source for constructing Hero objects.
  */
 public abstract class HeroList {
     public static ArrayList<Hero> getHeroList(Context context, ArrayList<Hero> heroes) {

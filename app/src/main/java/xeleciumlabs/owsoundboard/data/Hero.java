@@ -2,6 +2,7 @@ package xeleciumlabs.owsoundboard.data;
 
 /**
  * Created by Xelecium on 10/24/2016.
+ *  Class for OverWatch Heroes. Contains Resource IDs for images and voice lines.
  */
 public class Hero {
 

@@ -23,6 +23,7 @@ import static android.view.View.VISIBLE;
 
 /**
  * Created by Xelecium on 10/24/2016.
+ *  Adapter for populating the list of OverWatch Heroes.
  */
 public class HeroAdapter extends BaseAdapter {
 

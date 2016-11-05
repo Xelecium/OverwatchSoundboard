@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         >
 
         <ImageView
@@ -16,14 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/hero_sombra"
-            />
+            android:contentDescription="@string/hero_profile"/>
         <ImageView
             android:id="@+id/ultPic"
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ult_sombra"
-            />
+            android:contentDescription="@string/ultimate_icon"/>
 
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>
