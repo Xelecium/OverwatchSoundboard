@@ -1,8 +1,10 @@
 package xeleciumlabs.owsoundboard.activities;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,10 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView textView = (TextView)findViewById(R.id.textView);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "bignoodletoo.ttf");
+        textView.setTypeface(typeface);
 
         ArrayList<Hero> heroes = new ArrayList<>();
         HeroList.getHeroList(this, heroes);

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">OverWatch Soundboard</string>
+    <string name="app_name">Overwatch Soundboard</string>
     <string name="action_settings">Settings</string>
-    <string name="game_title">OverWatch</string>
+    <string name="game_title">Overwatch</string>
     <string name="hero_profile">Hero Profile</string>
     <string name="ultimate_icon">Ultimate Icon</string>
 
