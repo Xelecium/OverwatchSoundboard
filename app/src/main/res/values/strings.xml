@@ -4,6 +4,7 @@
     <string name="game_title">Overwatch</string>
     <string name="hero_profile">Hero Profile</string>
     <string name="ultimate_icon">Ultimate Icon</string>
+    <string name="ow_logo_bg">Overwatch Logo Background</string>
 
     <integer name="heroCount">23</integer>
 </resources>

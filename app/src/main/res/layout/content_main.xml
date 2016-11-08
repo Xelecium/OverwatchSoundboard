@@ -8,6 +8,13 @@
     tools:context="xeleciumlabs.owsoundboard.activities.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ow_logo"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/ow_logo_bg"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
